@@ -8,6 +8,7 @@ import {
   MenuItem
 } from '@mui/material';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const products = [
   {
@@ -42,6 +43,7 @@ const products = [
 ];
 
 export default function ProductCards() {
+  const navigate = useNavigate();
   const [hovered, setHovered] = useState(null);
   const [selectedOptions, setSelectedOptions] = useState({});
 
@@ -62,6 +64,7 @@ export default function ProductCards() {
             }}
             onMouseEnter={() => setHovered(index)}
             onMouseLeave={() => setHovered(null)}
+            onClick={() => navigate("/smartphones")}
           >
             <CardMedia
               component="img"

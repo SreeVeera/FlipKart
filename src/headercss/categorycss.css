@@ -1,0 +1,28 @@
+.category-container{
+    margin-top:100px;
+    display:flex;
+    background-color: aliceblue;
+    justify-content:space-between;
+    align-items: center;
+    gap: 24px;
+    margin:24px 0;
+    padding: 0 16px;
+    padding-top: 50px;
+}
+.category-item {
+  text-align: center;
+  width: 80px;          /* Optional fixed width for alignment */
+}
+.category-name {
+  display: block;
+  margin-top: 6px;
+  font-size: 13px;
+  font-weight: 500;
+}
+.category-link{
+    color: black;
+}
+.category-image {
+  width: 50px;          /* Reduced size */
+  height: 50px;
+}

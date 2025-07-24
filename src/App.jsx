@@ -1,15 +1,19 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Appbar from './header/appbar.jsx';
-import Product from './header/productcard.jsx';
 import Sphonepage from './header/smartphone.jsx';
 import Samsung from './header/samsung.jsx';
-import './App.css';
+import Category  from './header/category.jsx';
+import Carousel from './header/Carousel.jsx';
+import ElCarousel from './CardMulticarousel/ElectronicsCarousel.jsx';
+import "./index.css";
 
 function HomePage() {
   return (
     <>
-      <Appbar />
-      <Product />
+      <Appbar/>
+      <Category/>
+      <Carousel/>
+      <ElCarousel/>
     </>
   );
 }

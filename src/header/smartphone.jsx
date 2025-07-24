@@ -1,5 +1,6 @@
 import Appbar from './appbar.jsx';
 import { Card, CardContent, CardMedia, Typography, Grid, Checkbox, Box, Button } from '@mui/material';
+import {useNavigate} from 'react-router-dom';
 
 function Sphonepage() {
   return (
@@ -11,12 +12,13 @@ function Sphonepage() {
 }
 
 function Smartphones() {
+  const navigate = useNavigate();
   return (
     <Box sx={{ padding: 3, marginTop: 5 }}>
       <Grid container spacing={3}>
         {/* First Smartphone */}
-        <Grid item xs={12} sx={{ width: '100%' }}>
-          <Card sx={{ display: 'flex', alignItems: 'flex-start', padding: 2 }}>
+        <Grid item xs={12} sx={{ width: '100%' }} >
+          <Card sx={{ display: 'flex', alignItems: 'flex-start', padding: 2 }} onClick={() => navigate("/samsung")} >
             <CardMedia
               component="img"
               image="https://rukminim2.flixcart.com/image/850/1000/xif0q/mobile/e/r/f/-original-imah56hkgehywn5b.jpeg?q=90&crop=false"

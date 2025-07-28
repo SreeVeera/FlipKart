@@ -3,10 +3,14 @@ import Radio from '@mui/material/Radio';
 import RadioGroup from '@mui/material/RadioGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import FormControl from '@mui/material/FormControl';
-import FormLabel from '@mui/material/FormLabel';
 import Appbar from './appbar.jsx';
-import { Card, CardContent, CardMedia, Typography, Grid, Checkbox, Box, Button } from '@mui/material';
+import { Card, CardContent, Typography, Grid, Box, Button } from '@mui/material';
 import LocalOfferIcon from '@mui/icons-material/LocalOffer';
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import BoltIcon from '@mui/icons-material/Bolt';
+import {useNavigate} from 'react-router-dom';
+import { useCartStore } from '../store/cartStore.jsx';
+import { useEffect } from 'react';
 
 function Samsung() {
     return (
@@ -18,25 +22,61 @@ function Samsung() {
 }
 
 function Samtwil() {
+
+    const addToCart = useCartStore((state) => state.addToCart);
+    const cart = useCartStore((state) => state.cart);
+
+    useEffect(() => {
+        console.log("Cart update:", cart);
+    }, [cart]);
+
+    const Navigate = useNavigate();
+    // Product details
+    const product = {
+        id: 1,
+        name: "Samsung Galaxy F05 (Twilight Blue, 64 GB) (4 GB RAM)",
+        price: 6499,
+        image: "https://rukminim2.flixcart.com/image/850/1000/xif0q/mobile/e/r/f/-original-imah56hkgehywn5b.jpeg?q=90&crop=false"
+    };
     return (
         <Box sx={{ padding: 3 }}>
           <Grid container spacing={3}>
             <Grid item xs={12} md={3}>
               <Card sx={{ display: 'flex', padding: 2 }}>
-                <CardMedia
-                  component="img"
-                  image="https://rukminim2.flixcart.com/image/850/1000/xif0q/mobile/e/r/f/-original-imah56hkgehywn5b.jpeg?q=90&crop=false"
-                  alt="Samsung Galaxy F05"
-                  sx={{
-                    width: 200,
-                    height: 250,
-                    objectFit: 'contain',
-                    marginRight: 2, 
-                    position: 'sticky', 
-                    top: 50,
-                    alignSelf: 'flex-start'
-                  }}
-                />
+                <Box sx={{ dispaly: 'flex', flexDirection: 'column', alignItems: 'center', p: 2 }}>
+                    <Box 
+                        component="img"
+                        src={product.image}
+                        alt="Samsung Galaxy F05"
+                        sx={{
+                            width: 200,
+                            height: 250,
+                            objectFit: 'contain',
+                            marginRight: 2, 
+                            position: 'sticky', 
+                            top: 50,
+                            alignSelf: 'flex-start',
+                            mb: 10
+                        }}
+                    />
+                    <Box sx={{ display: 'flex', gap: 2 }}>
+                        <Button 
+                            variant="contained" 
+                            startIcon={<ShoppingCartIcon />} 
+                            sx={{ 
+                                bgcolor: 'yellow', 
+                                color: 'black', 
+                                '&:hover': { bgcolor: '#f1c40f' } 
+                            }} 
+                            onClick={() => {
+                                addToCart(product);
+                                Navigate("/cart");
+                            }} >
+                                ADD TO CART
+                        </Button>
+                        <Button variant="contained" startIcon={<BoltIcon />} sx={{ bgcolor: 'orange', color: 'white', '&:hover': { bgcolor: '#e67e22' } }}>BUY NOW</Button>
+                    </Box>
+                </Box>
                 <CardContent sx={{flex: 1}}>
                     <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
                         <Typography variant="h6" sx={{ fontWeight: 400 }}>

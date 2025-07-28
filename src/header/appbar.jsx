@@ -15,6 +15,8 @@ import MoreVertIcon from '@mui/icons-material/MoreVert';
 import AccountCircle from '@mui/icons-material/AccountCircle';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import SearchIcon from '@mui/icons-material/Search';
+import {useNavigate} from 'react-router-dom';
+import { useCartStore } from '../store/cartStore';
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
@@ -48,6 +50,9 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 
 export default function PrimarySearchAppBar() {
+
+  const cart = useCartStore((state) => state.cart);
+  const Navigate = useNavigate();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
 
@@ -101,7 +106,7 @@ export default function PrimarySearchAppBar() {
       onClose={handleMobileMenuClose}
     >
       <MenuItem>
-        <IconButton size="large" color="inherit">
+        <IconButton size="large" color="inherit" onClick={() => {Navigate("/cart")}} >
           <ShoppingCartIcon />
         </IconButton>
         <p>Cart</p>
@@ -154,8 +159,8 @@ export default function PrimarySearchAppBar() {
             </IconButton>
 
             {/* Cart */}
-            <IconButton size="large" color="inherit">
-              <Badge badgeContent={3} color="error">
+            <IconButton size="large" color="inherit" onClick={() => Navigate("/cart")} >
+              <Badge badgeContent={cart.length} color="error">
                 <ShoppingCartIcon />
               </Badge>
             </IconButton>

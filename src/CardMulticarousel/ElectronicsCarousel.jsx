@@ -52,7 +52,14 @@ const prod = product.map((item, index) => (
     img={item.img}
     alt={item.alt}
     name={item.name}
-    onClick={item.name === "Smart Phone" ? () => navigate("/smartphones") : undefined}
+    onClick={() => {
+      if (item.name === "Smart Phone") {
+        navigate("/smartphones") 
+      }
+      else if (item.name === "Smart TV") {
+        navigate("/smarttvs")
+      }
+    }}
   />
 ));
 const health = healthcare.map((item, index) => (

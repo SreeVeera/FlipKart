@@ -5,7 +5,6 @@ import {Button} from '@mui/material';
 function Cartpage() {
     return (
         <>
-            <Appbar />
             <Cart />
         </>
     );
@@ -25,10 +24,14 @@ function Cart() {
             {cart.map((item, idx) => (
                 <div key={idx} style={{border: '1px solid #ccc', margin: '10px', padding: '10px', display: 'flex', alignItems: 'center'}}>
                     <img src={item.image} alt={item.name} style={{width: '80px', height: '100px', objectFit: 'contain', marginRight: '20px'}} />
-                    <div>
-                        <h2 style={{margin: 0}}>{item.name}</h2>
-                        <p style={{margin: 0}}>Price: ₹{item.price}</p>
-                        <Button variant='contained' onClick={() => removeFromCart(item.id)}>Remove</Button>
+                    <div style={{ display: 'flex', flex: 1, alignItems: 'center' }}>
+                        <div style={{ flex: '0 0 75%' }}>
+                            <h4 style={{margin: 0 }}>{item.name}</h4>
+                            <p style={{margin: 10}}>Price: ₹{item.price}</p>
+                        </div>
+                        <div style={{ flex: '0 0 25%', display: 'flex', justifyContent: 'flex-end' }}>
+                            <Button variant='contained' onClick={() => removeFromCart(item.id)}>Remove</Button>
+                        </div>
                     </div>
                 </div>        
             ))}
